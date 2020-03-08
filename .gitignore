@@ -632,3 +632,5 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/linux,macos,latex,django,python,pycharm,windows,virtualenv,jupyternotebooks,visualstudiocode
 .vscode/settings.json
+*\migrations\*.py
+*/migrations/*
