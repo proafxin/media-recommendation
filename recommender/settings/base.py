@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from os.path import join, exists
+from json import loads
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -27,16 +29,26 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+FILE_SETTINGS_ENV = join(BASE_DIR, 'settings/settings.json')
+if not exists(FILE_SETTINGS_ENV):
+    raise FileNotFoundError('Settings environment file not found in'+FILE_SETTINGS_ENV)
+data = loads(open(FILE_SETTINGS_ENV).read())
+SECRET_KEY = data['SECRET_KEY']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'users',
+    'media',
+    'artist',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +81,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'recommender.wsgi.application'
 
+# Define default user model used by django
+AUTH_USER_MODEL = 'users.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -118,3 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+GENDERS = [
+    (1, 'Male'),
+    (2, 'Female'),
+    (3, 'Other'),
+]
