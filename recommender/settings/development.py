@@ -13,6 +13,7 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = join(BASE_DIR, 'static/')
-MEDIA_ROOT = join(BASE_DIR, 'media/')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+STATICFILES_DIRS = [
+    join(BASE_DIR, 'static/'),
+]
