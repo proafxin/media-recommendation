@@ -17,3 +17,6 @@ class Writer(Artist):
 
 class Actor(Artist):
     pass
+
+class Singer(Artist):
+    pass
