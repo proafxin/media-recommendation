@@ -9,6 +9,10 @@ MEDIA_TYPES = [
     (5, 'Games'),
 ]
 
+class Album(models.Model):
+    name = models.CharField(max_length=100)
+    artists = models.ManyToManyField(Singer)
+
 class Publisher(models.Model):
     name = models.CharField(max_length=100)
     media_type = models.IntegerField(
@@ -46,6 +50,11 @@ class Media(models.Model):
 class Song(Media):
     writers = models.ManyToManyField(Writer)
     singers = models.ManyToManyField(Singer)
+    album = models.ForeignKey(
+        Album, 
+        on_delete=models.CASCADE,
+        null=True,
+    )
     pass
 
 class Video(Media):
