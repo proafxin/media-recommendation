@@ -7,6 +7,7 @@ from .models import (
     Game, 
     Publisher, 
     Album,
+    Band,
 )
 
 
@@ -17,3 +18,4 @@ admin.site.register(Series)
 admin.site.register(Game)
 admin.site.register(Publisher)
 admin.site.register(Album)
+admin.site.register(Band)
