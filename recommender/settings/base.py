@@ -86,6 +86,8 @@ WSGI_APPLICATION = 'recommender.wsgi.application'
 # Define default user model used by django
 AUTH_USER_MODEL = 'users.User'
 
+LOGIN_REDIRECT_URL = 'home'
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -142,3 +144,5 @@ GENDERS = [
     (2, 'Female'),
     (3, 'Other'),
 ]
+
+CRISPY_TEMPLATE_PACKS = 'bootstrap4'
