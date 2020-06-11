@@ -4,6 +4,15 @@
 {% block content %}
 <section class="jumbotron text-center">
     <div class="container">
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="text-center alert alert-{{ message.tags }}">
+                        {{ message|safe }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         <form class="form-signin" action="{% url 'signin' %}" method="POST">
             {% csrf_token %}
             <fieldset class="form-group">

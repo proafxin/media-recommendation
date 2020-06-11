@@ -146,3 +146,5 @@ GENDERS = [
 ]
 
 CRISPY_TEMPLATE_PACKS = 'bootstrap4'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
