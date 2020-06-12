@@ -3,6 +3,7 @@ from users.views import (
     Home,
     SignUp,
     Profile,
+    Dashboard,
 )
 from django.contrib.auth.views import (
     LoginView,
@@ -12,6 +13,7 @@ from django.contrib.auth.views import (
 urlpatterns = [
     path('home/', Home.as_view(), name='home'),
     path('', Home.as_view(), name='home'),
+    path('dashboard/', Dashboard.as_view(), name='dashboard'),
     path('signup/', SignUp.as_view(), name='signup'),
     path('profile/', Profile.as_view(), name='profile'),
     path('signin/', LoginView.as_view(template_name='users/signin.html'), name='signin'),
