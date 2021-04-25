@@ -1,6 +1,6 @@
 """
 Author: Masum Billal
-Define routing for the app 'users'
+url routing for /api/users/
 """
 
 from django.urls import path
