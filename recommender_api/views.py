@@ -36,6 +36,6 @@ class CreatorGeneric(RetrieveUpdateDestroyAPIView):
     """
 
     queryset = Creator.objects.all()
-    serializer_class = Creator
+    serializer_class = CreatorSerializer
     authentication_classes = settings.AUTHENTICATION_CLASSES
     permission_classes = settings.PERMISSION_CLASSES
