@@ -22,5 +22,6 @@ from django.urls import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('users.urls')),
+    path('api/users/', include('users.urls')),
+    path('api/recommender/', include('recommender_api.urls')),
 ]
