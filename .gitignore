@@ -634,3 +634,4 @@ $RECYCLE.BIN/
 .vscode/settings.json
 *\migrations\*.py
 */migrations/*
+er.png
