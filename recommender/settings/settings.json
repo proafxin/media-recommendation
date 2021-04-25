@@ -1,8 +1,0 @@
-{
-    "SECRET_KEY": "nkie=+!yl%k%%bf)x=$bt3=#m5=z9b0-+a_xov+orgs$r499*l",
-    "DATABASE_HOST": "localhost",
-    "DATABASE_NAME": "media-recommender",
-    "DATABASE_USER": "masum",
-    "DATABASE_PASSWORD": "euler2010",
-    "DATABASE_PORT": 3306
-}
