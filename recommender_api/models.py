@@ -50,7 +50,7 @@ class History(models.Model):
         Media,
         on_delete=models.CASCADE,
     )
-    views = models.IntegerField(max_length=10)
+    views = models.IntegerField()
     rating = models.IntegerField(
         choices=settings.RATINGS,
     )
