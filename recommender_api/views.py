@@ -1,3 +1,4 @@
-from django.shortcuts import render
-
-# Create your views here.
+"""
+Author: Masum Billal
+Write views to be mapped to urls
+"""
