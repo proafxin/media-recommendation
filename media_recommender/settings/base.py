@@ -68,6 +68,37 @@ PERMISSION_CLASSES = [
     IsAuthenticated,
 ]
 
+MEDIA_TYPES = (
+    (1, 'video'),
+    (2, 'audio'),
+    (3, 'music'),
+    (4, 'game'),
+    (5, 'other'),
+)
+
+CREATOR_TYPES = (
+    (1, 'artist'),
+    (2, 'director'),
+    (3, 'singer'),
+    (4, 'cast'),
+    (5, 'band'),
+    (6, 'company'),
+    (7, 'other'),
+)
+
+RATINGS = (
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+    (6, 6),
+    (7, 7),
+    (8, 8),
+    (9, 9),
+    (10, 10),
+)
+
 ROOT_URLCONF = 'media_recommender.urls'
 
 TEMPLATES = [
