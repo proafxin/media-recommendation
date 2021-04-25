@@ -16,7 +16,6 @@ class Creator(models.Model):
 
     name = models.CharField(max_length=50)
     genre = models.IntegerField(
-        max_length=1,
         choices=settings.CREATOR_TYPES,
     )
 
@@ -29,7 +28,6 @@ class Media(models.Model):
 
     title = models.CharField(max_length=50)
     genre = models.IntegerField(
-        max_length=1,
         choices=settings.MEDIA_TYPES,
     )
     creator = models.ForeignKey(
@@ -54,6 +52,5 @@ class History(models.Model):
     )
     views = models.IntegerField(max_length=10)
     rating = models.IntegerField(
-        max_length=2,
         choices=settings.RATINGS,
     )
