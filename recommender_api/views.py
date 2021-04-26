@@ -4,6 +4,7 @@ Write views to be mapped to urls
 """
 
 from django.conf import settings
+from django.contrib.auth.models import User
 
 from rest_framework.filters import SearchFilter
 
@@ -103,6 +104,8 @@ class MediaByGenre(ListAPIView):
     """
 
     serializer_class = MediaSerializer
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
 
     def get_queryset(self):
         """
@@ -115,5 +118,30 @@ class MediaByGenre(ListAPIView):
         if genre is not None:
             genre = int(genre)
             queryset = Media.objects.filter(genre=genre)
+        
+        return queryset
+
+
+class HistoryByUsername(ListAPIView):
+    """
+    View to get history list by username
+    """
+
+    serializer_class = HistorySerializer
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
+
+    def get_queryset(self):
+        """
+        This should return the list of history for the username
+        """
+
+        username = self.kwargs['username']
+        queryset = []
+
+        if username is not None:
+            queryset = History.objects.filter(
+                user__username=username,
+            )
         
         return queryset

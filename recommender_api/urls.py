@@ -16,6 +16,7 @@ from recommender_api.views import (
     MediaByGenre,
     HistoryList,
     HistoryGeneric,
+    HistoryByUsername,
 )
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     path('media/<int:pk>/', MediaGeneric.as_view(), name='media'),
     path('medias/', MediaList.as_view(), name='medias'),
     path('histories/', HistoryList.as_view(), name='histories'),
-    path('history/<int:pk>/', HistoryGeneric.as_view(), name='history'),
+    path('histories/<int:pk>/', HistoryGeneric.as_view(), name='history'),
     path('medias/genre/<int:genre>/', MediaByGenre.as_view(), name='media-by-genre'),
+    path('histories/username/<str:username>/', HistoryByUsername.as_view(), name='history-by-username'),
 ]
