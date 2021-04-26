@@ -4,18 +4,24 @@ Write views to be mapped to urls
 """
 
 from django.conf import settings
+
+from rest_framework.filters import SearchFilter
+
 from rest_framework.generics import (
+    ListAPIView,
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
 
 from recommender_api.models import (
     Creator,
-    # Media,
-    # History,
+    Media,
+    History,
 )
 from recommender_api.serializers import (
     CreatorSerializer,
+    MediaSerializer,
+    HistorySerializer,
 )
 
 
@@ -29,6 +35,12 @@ class CreatorList(ListCreateAPIView):
     serializer_class = CreatorSerializer
     authentication_classes = settings.AUTHENTICATION_CLASSES
     permission_classes = settings.PERMISSION_CLASSES
+    filter_backends = [SearchFilter]
+    search_fields = [
+        'name',
+        'genre',
+    ]
+
 
 class CreatorGeneric(RetrieveUpdateDestroyAPIView):
     """
@@ -39,3 +51,69 @@ class CreatorGeneric(RetrieveUpdateDestroyAPIView):
     serializer_class = CreatorSerializer
     authentication_classes = settings.AUTHENTICATION_CLASSES
     permission_classes = settings.PERMISSION_CLASSES
+
+
+class MediaList(ListCreateAPIView):
+    """
+    view to get media list and post new media
+    """
+
+    queryset = Media.objects.all()
+    serializer_class = MediaSerializer
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
+
+
+class MediaGeneric(RetrieveUpdateDestroyAPIView):
+    """
+    generic view to get, put, delete 'media'
+    """
+
+    queryset = Media.objects.all()
+    serializer_class = MediaSerializer
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
+
+
+class HistoryList(ListCreateAPIView):
+    """
+    view to get history list and post new history
+    """
+
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
+
+
+class HistoryGeneric(RetrieveUpdateDestroyAPIView):
+    """
+    generic view to get, put, delete 'history'
+    """
+
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
+
+
+class MediaByGenre(ListAPIView):
+    """
+    view to get media list by username
+    """
+
+    serializer_class = MediaSerializer
+
+    def get_queryset(self):
+        """
+        This should return the list of media for the username
+        """
+
+        genre = self.kwargs['genre']
+        queryset = []
+
+        if genre is not None:
+            genre = int(genre)
+            queryset = Media.objects.filter(genre=genre)
+        
+        return queryset
