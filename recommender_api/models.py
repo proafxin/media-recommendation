@@ -19,6 +19,9 @@ class Creator(models.Model):
         choices=settings.CREATOR_TYPES,
     )
 
+    def __str__(self):
+        return self.name.capitalize()+' '+str(self.genre)
+
 
 class Media(models.Model):
     """
@@ -34,6 +37,9 @@ class Media(models.Model):
         Creator,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return self.title.capitalize()+' '+str(self.genre)
 
 
 class History(models.Model):
