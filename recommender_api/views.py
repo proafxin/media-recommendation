@@ -4,7 +4,6 @@ Write views to be mapped to urls
 """
 
 from django.conf import settings
-from django.contrib.auth.models import User
 
 from rest_framework.filters import SearchFilter
 
@@ -118,7 +117,7 @@ class MediaByGenre(ListAPIView):
         if genre is not None:
             genre = int(genre)
             queryset = Media.objects.filter(genre=genre)
-        
+
         return queryset
 
 
@@ -143,5 +142,5 @@ class HistoryByUsername(ListAPIView):
             queryset = History.objects.filter(
                 user__username=username,
             )
-        
+
         return queryset
