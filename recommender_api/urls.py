@@ -12,6 +12,7 @@ from recommender_api.views import (
     CreatorGeneric,
     MediaList,
     MediaGeneric,
+    MediaByCreator,
     MediaByGenre,
     HistoryList,
     HistoryGeneric,
@@ -27,4 +28,5 @@ urlpatterns = [
     path('histories/<int:pk>/', HistoryGeneric.as_view(), name='history'),
     path('medias/genre/<int:genre>/', MediaByGenre.as_view()),
     path('histories/username/<str:username>/', HistoryByUsername.as_view()),
+    path('medias/creator/<int:creator>/', MediaByCreator.as_view()),
 ]

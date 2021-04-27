@@ -75,6 +75,30 @@ class MediaGeneric(RetrieveUpdateDestroyAPIView):
     permission_classes = settings.PERMISSION_CLASSES
 
 
+class MediaByCreator(ListAPIView):
+    """
+    Generic view to get media by creator id
+    """
+
+    serializer_class = MediaSerializer
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
+
+    def get_queryset(self):
+        """
+        This should return the list of media by creator id
+        """
+
+        queryset = []
+        creator_id = self.kwargs['creator']
+        if creator_id is not None:
+            queryset = Media.objects.filter(
+                creator__id=creator_id,
+            )
+        
+        return queryset
+
+
 class HistoryList(ListCreateAPIView):
     """
     view to get history list and post new history
