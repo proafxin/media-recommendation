@@ -5,7 +5,7 @@ Define models for keeping history of media-user
 
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 
 class Creator(models.Model):
@@ -49,7 +49,7 @@ class History(models.Model):
     """
 
     user = models.ForeignKey(
-        User,
+        get_user_model(),
         on_delete=models.CASCADE,
     )
     media = models.ForeignKey(
