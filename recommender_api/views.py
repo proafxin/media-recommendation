@@ -24,6 +24,14 @@ from recommender_api.serializers import (
     HistorySerializer,
 )
 
+class BaseListAPIView(ListAPIView):
+    """
+    Base generic class for list API
+    """
+
+    authentication_classes = settings.AUTHENTICATION_CLASSES
+    permission_classes = settings.PERMISSION_CLASSES
+
 
 class CreatorList(ListCreateAPIView):
     """
@@ -166,5 +174,39 @@ class HistoryByUsername(ListAPIView):
             queryset = History.objects.filter(
                 user__username=username,
             )
+
+        return queryset
+
+
+class HistoryByUserAndGenre(BaseListAPIView):
+    """
+    View to get history by username and genre
+    """
+
+    serializer_class = HistorySerializer
+
+    def get_queryset(self):
+        """
+        This should return the history list by username and genre
+        """
+
+        username = self.kwargs['username']
+        genre = self.kwargs['genre']
+
+        queryset = []
+
+        if username != username:
+            return queryset
+        
+        if genre != genre:
+            queryset = History.objects.filter(
+                user__username=username,
+            )
+        else:
+            queryset = History.objects.filter(
+                user__username=username,
+                media__genre=genre,
+            )
+        
 
         return queryset
