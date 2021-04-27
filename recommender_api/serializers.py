@@ -12,12 +12,12 @@ from recommender_api.models import (
 )
 
 
-class CreatorSerializer(ModelSerializer):
+class CreatorSerializer(ModelSerializer):# pylint: disable=too-few-public-methods
     """
     Serializer for the entity 'creator'
     """
 
-    class Meta:
+    class Meta:# pylint: disable=too-few-public-methods
         """
         Specify fields for exposing 'creator' in JSON
         """
@@ -26,12 +26,12 @@ class CreatorSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class MediaSerializer(ModelSerializer):
+class MediaSerializer(ModelSerializer):# pylint: disable=too-few-public-methods
     """
     Serializer for the entity 'media'
     """
 
-    class Meta:
+    class Meta:# pylint: disable=too-few-public-methods
         """
         Specify fields for exposing 'media' in JSON
         """
@@ -40,12 +40,12 @@ class MediaSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class HistorySerializer(ModelSerializer):
+class HistorySerializer(ModelSerializer):# pylint: disable=too-few-public-methods
     """
     Serializer for the entity 'history'
     """
 
-    class Meta:
+    class Meta:# pylint: disable=too-few-public-methods
         """
         Specify fields for exposing 'history' in JSON
         """
