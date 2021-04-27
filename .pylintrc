@@ -1,2 +1,4 @@
 [MASTER]
 ignore=migrations
+[DESIGN]
+max-parents=15
